@@ -19,8 +19,8 @@ error_msg() {
 
 usage() {
 	echo -e "Usage:"
-	echo -e "Burn VIMs image: $0 [-v aml] [-b <VIM1|VIM2|VIM3>] -i <path-to-image>"
-	echo -e "Burn Edge:       $0 -v rk -i <path-to-image>"
+	echo -e "Burn Amlogic (VIMs) image: $0 [-v aml] [-b <VIM1|VIM2|VIM3>] -i <path-to-image>"
+	echo -e "Burn RockChip (Edge) image: $0 -v rk -i <path-to-image>"
 }
 
 if [ ! -L $KHADAS_BURN_TOOL ]; then
@@ -59,8 +59,8 @@ if [ "$VENDER" == "rk" ]; then
 	echo "Try to burn Rockchip image..."
 	$RK_BURN_TOOL -i "$IMAGE"
 elif [ "$VENDER" == "aml" ]; then
-	# Default BOARD VIM1
-	BOARD=${BOARD:-VIM1}
+	# Default BOARD VIM3
+	BOARD=${BOARD:-VIM3}
 	echo "Try to burn Amlogic image..."
 	$AML_BURN_TOOL -b "$BOARD" -i "$IMAGE"
 else
